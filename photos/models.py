@@ -26,7 +26,7 @@ class Category(models.Model):
 class Image(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=700)
-    image_file = models.FileField(upload_to='photos/static/uploads/')
+    image_file = models.ImageField(upload_to='uploads/')
     dated = models.DateTimeField(auto_now_add=True)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     category = models.ManyToManyField(Category, related_name='images')

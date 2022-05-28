@@ -3,5 +3,41 @@
 {% block body %}
 
 {{block.super}}
+<div class="container border bg-secondary" >
+{% for image in images %}
+<div>
+     <br/>
+    <img src="{{image.image_file.url}}">
+    <br>
+
+
+    <p>{{ image.description }}</p> <br>
+
+<!-- Button trigger modal -->
+ <a href="" role="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal{{image.id}}">View Image Details</a>
+
+  <!-- Modal -->
+  <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-dark" id="exampleModalLabel">{{ image.name }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <img src="{{image.image_file.url}}" class="img-responsive" style="width: 200px" > <br>
+            {{ image.category}} <br/> {{ image.location }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">copy image url</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  {% endfor %}
+
+</div>
 
 {% endblock body %}
